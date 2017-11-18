@@ -149,6 +149,77 @@
         </pre>
     </section>
 
+    <section class="slide">
+        <h2>Добавление на страницу</h2>
+        <ul>
+            <li><code>appendChild</code></li>
+            <li><code>insertBefore</code></li>
+        </ul>
+        <pre>
+            <code>var div = document.createElement('div');</code>
+            <code>div.innerText = 'Hello';</code>
+            <code>var form = document.getElementById('form1');</code>
+            <code>form.appendChild(div);</code>
+            <code><span class="comment">/* div - живая ссылка */</span></code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2><code>insertBefore</code></h2>
+        <pre>
+            <code>var div = document.createElement('div');</code>
+            <code>div.innerText = 'Hello';</code>
+            <code>var form = document.getElementById('form1');</code>
+            <code><mark href="http://document.body">document.body</mark>.insertBefore(div, <mark>form</mark>);</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2>Удаление элементов</h2>
+        <pre>
+            <code>var <mark>form</mark> = document.getElementById('form1');</code>
+            <code>var removedForm = document.body.removeChild(form);</code>
+            <code><span class="comment">/* или */</span></code>
+            <code>var <mark>removedForm</mark> = form.remove(); <span class="comment">// Не поддерживается в IE</span></code>
+        </pre>
+        <blockquote>Элемент не удаляется совсем, он исключается из DOM, но сохраняется в памяти до тех пор, пока на него существуют ссылки</blockquote>
+    </section>
+
+    <section class="slide">
+        <h2>DocumentFragment</h2>
+        <ul>
+            <li><code>var fragment = document.createDocumentFragment();</code></li>
+            <li>не имеет родительского элемента</li>
+            <li>не имеет отражения в DOM документа</li>
+            <li>частично поддерживает методы работы с дочерними элементами</li>
+            <li><code>querySelector</code>, <code>querySelectorAll</code></li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>События</h2>
+        <code>target.addEventListener(type, listener[, useCapture]);</code>
+        <ul>
+            <li><code>type</code> - тип события</li>
+            <li><code>listener</code> - объект принимающий событие или функция обратного вызова</li>
+            <li><code>useCapture</code> - захват события <code>true/false</code></li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Совместимость</h2>
+        <pre>
+            <code>if (el.addEventListener) {<span class="comment"> // обычные браузеры</span></code>
+            <code>    el.addEventListener('click', modifyText, false);</code>
+            <code>} else if (el.attachEvent)  {<span class="comment"> // IE8-</span></code>
+            <code>    el.attachEvent('onclick', modifyText);</code>
+            <code>}</code>
+            <code>function modifyText(<mark>event</mark>) {</code>
+            <code>...</code>
+            <code>}</code>
+        </pre>
+    </section>
+
 
 
 
