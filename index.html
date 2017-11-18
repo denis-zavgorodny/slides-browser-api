@@ -18,10 +18,12 @@
 <body class="shower list">
 	<header class="caption">
         <h1>DOM, Browser, Server</h1>
-	</header>
+    </header>
+
 	<section class="slide">
         <h2 class="shout">DOM</h2>
-	</section>
+    </section>
+
 	<section class="slide">
         <h2>Document Object Model</h2>
         <pre>
@@ -36,6 +38,7 @@
             <code>&lt;/html&gt;</code>
         </pre>
     </section>
+
     <section class="slide">
         <h2>Document Object Model</h2>
         <center><img src="pictures/dom1.jpg" width="70%" alt=""></center>
@@ -54,16 +57,96 @@
         </ul>
     </section>
 
-
-
     <section class="slide">
         <h2>Document Object Model</h2>
         <ul>
             <li>программный интерфейс к HTML (XML) документам</li>
             <li>представляет из себя группу узлов</li>
             <li>каждый узел имеет свойства и методы</li>
-            <li>доступна для JavaScript</li>
+            <li>в браузере доступна для JavaScript</li>
         </ul>
+    </section>
+
+    <section class="slide">
+        <h2>DOM, типы объектов</h2>
+        <ul>
+            <li><code>document</code> – корневой элемент</li>
+            <li><code>element</code> – узел DOM</li>
+            <li><code>NodeList</code> – коллекция из element</li>
+            <li><code>HTMLCollection</code> – коллекция из element</li>
+            <li><code>attribute</code> – ссылка на объект для работы с атрибутами</li>
+            <li><code>namedNodeMap</code> – map из element</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Выбор элементов</h2>
+        <div>Возвращают <mark>живые</mark> коллекции <code>NodeList</code></div>
+        <ul>
+            <li><code>document.getElementById</code></li>
+            <li><code>document.getElementsByName</code></li>
+            <li><code>document.getElementsByTagName</code></li>
+            <li><code>document.getElementsByClassName</code></li>
+        </ul>
+
+        <div>Возвращают <mark>статические</mark> коллекции <code>NodeList</code></div>
+        <ul>
+            <li><code>document.querySelectorAll</code></li>
+            <li><code>document.querySelector</code></li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Навигация по узлам</h2>
+        <ul>
+            <li><code>parentNode</code></li>
+            <li><code>childNodes</code></li>
+            <li><code>firstChild, lastChild</code></li>
+            <li><code>nextSibling, previousSibling</code></li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Навигация по элементам</h2>
+        <ul>
+            <li><code><mark>parentNode</mark></code></li>
+            <li><code>children</code></li>
+            <li><code>firstElementChild, lastElementChild</code></li>
+            <li><code>nextElementSibling, previousElementSibling</code></li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Атрибуты</h2>
+        <ul>
+            <li><code>attributes</code></li>
+            <li><code>getAttribute</code></li>
+            <li><code>setAttribute</code></li>
+            <li><code>img.src</code></li>
+            <li><code>img.html<mark>For</mark></code></li>
+            <li><code>img.<mark>class</mark>Name</code></li>
+            <li>верблюжийРегистр</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Содержимое элементов</h2>
+        <pre>
+            <code>var foo = document.getElementById('paragraph1');</code>
+            <code>var html = foo.innerHtml; <span class="comment">// текст с разметкой</span></code>
+            <code>var text = foo.innerText; <span class="comment">// только текст</span></code>
+            <code>var p = foo.outerText;<span class="comment">// текст с разметкой включая себя</span></code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2>Создание новых узлов</h2>
+        <pre>
+            <code>var img = document.create<mark>Element</mark>('img');</code>
+            <code>img.src = 'http://url/image.jpg';</code>
+            <code>var text = document.create<mark>TextNode</mark>('Some text');</code>
+            <code><span class="comment">/* А как добавить на страницу? */</span></code>
+        </pre>
     </section>
 
 
