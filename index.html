@@ -220,6 +220,24 @@
         </pre>
     </section>
 
+    <section class="slide">
+        <h2>Отписка от события</h2>
+        <pre>
+            <code>el.addEventListener('click', modifyText, false);</code>
+            <code>function modifyText(event) {</code>
+            <code>...</code>
+            <code>}</code>
+            <code>el.<mark>removeEventListener</mark>('click', modifyText, false);</code>
+            <code>el.<mark>detachEvent</mark>('onclick', modifyText) <span class="comment">/* для IE8- */</span></code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">window</h2>
+    </section>
+
+
+
 
 
 
