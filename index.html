@@ -530,6 +530,238 @@
         </pre>
     </section>
 
+    <section class="slide">
+        <h2 class="shout">CORS</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Cross-origin resource sharing</h2>
+        <ul>
+            <li>
+                <mark>Same Origin Policy</mark>, политика одинакового источника
+                <ul>
+                    <li>протокол</li>
+                    <li>домен</li>
+                    <li>порт</li>
+                </ul>
+            </li>
+            <li>политика регламентирования доступа к ресурсам другого домена</li>
+            <li><code>Access-Control-Allow-Origin: http://youdomain.com</code></li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2><code>JSONP</code></h2>
+        <pre>
+            <code>&lt;script </code>
+            <code>    src="some.js?query=data&<mark>callback</mark>=myFunction"&gt;</code>
+            <code>&lt;/script&gt;</code>
+            <code>&lt;script&gt;</code>
+            <code>    function myFunction(params){...}</code>
+            <code>&lt;/script&gt;</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2><code>JSONP</code></h2>
+        <pre>
+            <code>&lt;script&gt;</code>
+            <code>    var script = document.createElement('script');</code>
+            <code>    script.src = "some.js?query=data&<mark>callback</mark>=myFunction";</code>
+            <code>    script.async = true;</code>
+            <code>    document.body.appendChild(script);</code>
+            <code>    function myFunction(params){...}</code>
+            <code>&lt;/script&gt;</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">fetch</h2>
+    </section>
+
+    <section class="slide">
+        <h2>fetch</h2>
+        <code>let promise = fetch(url[, options]);</code>
+        <ul>
+            <li><code>method</code> – метод запроса</li>
+            <li><code>headers</code> – заголовки запроса <code>{}</code></li>
+            <li><code>body</code> – тело запроса</li>
+            <li><code>mode</code> – <code>same-origin</code> | <code>no-cors</code> | <code>cors</code></li>
+            <li><code>credentials</code> – <code>omit</code> | <code>same-origin</code> | <code>include</code></li>
+            <li><code>cache</code> – <code>default</code> | <code>no-store</code> | <code>reload</code> | <code>no-cache</code> | <code>force-cache</code></li>
+            <li><code>redirect</code> – <code>follow</code> | <code>error</code></li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>fetch</h2>
+        <pre>
+            <code>let promise = fetch(url[, options]);</code>
+            <code>promise.then(function(response){</code>
+            <code>    console.log(response); <span class="comment">// ?</span></code>
+            <code>});</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2>fetch</h2>
+        <center><img src="pictures/fetch.png" width="70%" alt=""></center>
+    </section>
+
+    <section class="slide">
+        <h2>fetch</h2>
+        <pre>
+            <code>let promise = fetch(url[, options]);</code>
+            <code>promise.then(function(response){</code>
+            <code>    return  response.json();</code>
+            <code>})</code>
+            <code>.then(function(response){</code>
+            <code>    console.log(<mark>response</mark>);</code>
+            <code>});</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2>fetch</h2>
+        <ul>
+            <li><code>response.arrayBuffer()</code></li>
+            <li><code>response.blob()</code></li>
+            <li><code>response.formData()</code></li>
+            <li><code>response.json()</code></li>
+            <li><code>response.text()</code></li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">Кэширование</h2>
+    </section>
+
+    <section class="slide">
+        <h2>HTTP Headers</h2>
+        <ul>
+            <li>General Headers</li>
+            <li>Request Headers</li>
+            <li>Response Headers</li>
+            <li>Entity Headers</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Cache-Control [HTTP 1.1]</h2>
+        <ul>
+            <li>max-age=ХХ (время в сек)</li>
+            <li>private | public</li>
+            <li>no-cache</li>
+            <li>no-store</li>
+            <li>must-revalidate</li>
+            <li>...</li>
+
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Expires [HTTP 1.0]</h2>
+        <ul>
+            <li>
+                <code>Expires: Wed, 16 Nov 2017 07:28:00 GMT</code>
+            </li>
+            <li>устаревший аналог
+                <big>max-age</big>
+            </li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>ETag [HTTP 1.1]</h2>
+        <ul>
+            <li>
+                <code>ETag: "59a49fa0-b9ac"</code>
+            </li>
+            <li>требуется запрос на сервер</li>
+            <li>более тонкая работа с кэшем</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">Клиент-сервер</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Клиент-сервер</h2>
+        <center><img src="pictures/client1.jpg" width="70%" alt=""></center>
+    </section>
+
+    <section class="slide">
+        <h2>Клиент-сервер</h2>
+        <center><img src="pictures/client2.jpg" width="70%" alt=""></center>
+    </section>
+
+    <section class="slide">
+        <h2>Клиент-сервер</h2>
+        <ul>
+            <li>больше логики на клиенте</li>
+            <li>взаимодействие с сервером без перезагрузки страницы
+                <ul>
+                    <li><code>XHR</code>, <code>JSONP</code>, <code>fetch</code></li>
+                    <li><code>History</code> API</li>
+                </ul>
+            </li>
+            <li>управление кэшированием</li>
+            <li>хранение данных на клиенте <code>localStorage</code></li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Самостоятельное изучение</h2>
+        <ul>
+            <li><a href="https://developer.mozilla.org/ru/docs/DOM/DOM_Reference">Руководство по DOM</a>,
+            <a href="https://learn.javascript.ru/introduction-browser-events">Браузерные события</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Shadow_DOM">Shadow DOM</a>,
+                <a href="https://learn.javascript.ru/shadow-dom">еще Shadow DOM</a>
+                и <a href="http://w3c.github.io/webcomponents/spec/shadow/">спецификация</a>
+            </li>
+            <li><a href="https://developer.mozilla.org/ru/docs/Web/API/Window/localStorage">LocaStorage</a> и
+            <a href="https://developer.mozilla.org/ru/docs/Web/API/Window/sessionStorage">sessionStorage</a></li>
+            <li><a href="https://developer.mozilla.org/ru/docs/Web/HTTP/Status">HTTP коды ответов</a>,
+            <a href="https://developer.mozilla.org/ru/docs/Web/HTTP/Methods">HTTP методы запросов</a></li>
+            <li><a href="https://developer.mozilla.org/ru/docs/Web/API/XMLHttpRequest">Основы XHR</a>,
+                <a href="https://learn.javascript.ru/ajax-xmlhttprequest">еще XHR</a>
+                <a href="http://xmlhttprequest.ru/">и полное описание XMLHTTPRequest</a>
+            </li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS">Описание CORS</a>,
+            <a href="https://learn.javascript.ru/xhr-crossdomain">кроссдоменные XHR</a></li>
+            <li><a href="https://medium.com/web-standards/fetch-vs-axios-js-%D0%B4%D0%BB%D1%8F-%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%B8-http-%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81%D0%BE%D0%B2-41206a4c0060">Генерация HTTP запросов</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers">HTTP заголовки</a></li>
+        </ul>
+    </section>
+
+
+
+
+
+
+    <section class="slide">
+        <h2>Спасибо!</h2>
+        <table class="simple-table">
+            <tr>
+                <td>
+                    <p>
+                        <strong>Denis Zavgorodny</strong>
+                        <br /> web technologist, founder of @ChernivtsiJS,
+                        <br />mentor at @NodeSchool Chernivtsi, expert at @Nenology
+                    </p>
+                    <p>
+                        <a href="https://twitter.com/DenisZavgorodny">@DenisZavgorodny</a>
+                    </p>
+                    <p>
+                        <a href="mailto:denis.zavgorodny@gmail.com">denis.zavgorodny@gmail.com</a>
+                    </p>
+                </td>
+            </tr>
+        </table>
+    </section>
+
+
 
 
 
