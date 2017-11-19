@@ -14,7 +14,10 @@
 
     <script>
         var el = document.getElementById('form-1');
-        console.log(el.children);
+        window.addEventListener('popstate', function(){
+            console.log('url changed');
+        });
     </script>
+    <script src="main.js"></script>
 </body>
 </html>

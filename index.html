@@ -236,6 +236,231 @@
         <h2 class="shout">window</h2>
     </section>
 
+    <section class="slide">
+        <h2>Таймеры</h2>
+        <pre>
+            <code>var timerId = setTimeout(function(){...}, <mark>300</mark>);</code>
+            <code>var intervalId = setInterval(function(){...}, <mark>1000</mark>);</code>
+            <code>...</code>
+            <code>clearTimeout(timerId);</code>
+            <code>clearInterval(intervalId);</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2>URL и история</h2>
+        <ul>
+            <li>Объект <code>Location</code>
+                <ul>
+                    <li><code>location.href</code></li>
+                    <li><code>location.hash</code></li>
+                    <li><code>location.origin</code></li>
+                    <li><code>location.search</code></li>
+                    <li><code>location.assign()</code></li>
+                    <li><code>location.reload()</code></li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>URL и история</h2>
+        <ul>
+            <li>Объект <code>History</code>
+                <ul>
+                    <li><code>history.pushState()</code></li>
+                    <li><code>history.replaceState()</code></li>
+                    <li><code>history.back()</code></li>
+                    <li><code>history.forward()</code></li>
+                    <li><code>history.go()</code></li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2><code href="http://history.pushState">history.pushState</code></h2>
+        <pre>
+            <code>var state = {data: someData};</code>
+            <code>var title = 'My amazing page';</code>
+            <code>var url = '/index.html';</code>
+            <code>history.pushState(state, title, url);</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2>Как слушать переходы?</h2>
+        <div>Событие <code>popstate</code></div>
+        <pre>
+            <code><span class="comment">// подписываемся на событие</span></code>
+            <code>window.addEventListener('popstate', function(){</code>
+            <code>    console.log('url changed');</code>
+            <code>});</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">640k</h2>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">WebStorage</h2>
+    </section>
+
+    <section class="slide">
+        <h2><code>localStorage</code></h2>
+        <ul>
+            <li>"постоянное" хранилище</li>
+            <li>хранит ключ => значение</li>
+            <li>данные хранит в виде строк</li>
+            <li>досутпный размер хранилища зависит от браузера</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2><code>localStorage</code></h2>
+        <pre>
+            <code>var data = {</code>
+            <code>    a: 1,</code>
+            <code>    b: 'text'</code>
+            <code>};</code>
+            <code>localStorage.setItem("data", <mark>JSON.stringify</mark>(data));</code>
+            <code><span class="comment">// {"a":1,"b":"text"}</span></code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2><code>localStorage</code></h2>
+        <pre>
+            <code>var data = localStorage.<mark>getItem</mark>('data');</code>
+            <code><span class="comment">// {"a":1,"b":"text"}</span></code>
+            <code>console.log(JSON.parse(data)); <span class="comment">// Object</span></code>
+            <code>console.log(localStorage.data);<span class="comment">// ???</span></code>
+            <code>&nbsp;</code>
+            <code>localStorage.<mark>removeItem</mark>('data');</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2><code>sessionStorage</code></h2>
+        <ul>
+            <li>"временное" хранилище</li>
+            <li>данные хранятся до закрытия вкладки или браузера</li>
+            <li>хранит ключ => значение</li>
+            <li>данные хранит в виде строк</li>
+            <li>досутпный размер хранилища зависит от браузера</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">Общение с сервером</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Общение с сервером</h2>
+        <ul>
+            <li>отправка форм</li>
+            <li>XMLHttpRequest</li>
+            <li>JSONP</li>
+            <li>Fetch</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">Методы HTTP</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Методы запросов HTTP</h2>
+        <ul>
+            <li><mark>GET</mark></li>
+            <li>HEAD</li>
+            <li><mark>POST</mark></li>
+            <li>PUT</li>
+            <li>PATCH</li>
+            <li>OPTIONS</li>
+            <li>DELETE</li>
+            <li>TRACE</li>
+            <li>CONNECT</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Коды ответов</h2>
+        <ul>
+            <li>1xx - информационные</li>
+            <li>2xx - успешные</li>
+            <li>3xx - перенаправления</li>
+            <li>4xx - ошибки клиента</li>
+            <li>5xx - ошибки сервера</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Часто используемые коды ответов</h2>
+        <ul>
+            <li><code>200 OK</code></li>
+            <li><code>201 Created</code></li>
+            <li><code>301 Moved Permanently</code></li>
+            <li><code>302 Moved Temporarily</code></li>
+        </ul>
+    </section>
+    <section class="slide">
+        <h2>Часто используемые коды ответов</h2>
+        <ul>
+            <li><code>400 Bad Request</code></li>
+            <li><code>401 Unauthorized</code></li>
+            <li><code>403 Forbidden</code></li>
+            <li><code>404 Not Found</code></li>
+            <li><code>500 Internal Server Error</code></li>
+            <li><code>502 Bad Gateway</code></li>
+            <li><code>503 Service Unavailable</code></li>
+            <li><code>504 Gateway Timeout</code></li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Общение с сервером</h2>
+        <ul>
+            <li><del>отправка форм</del></li>
+            <li>XMLHttpRequest</li>
+            <li>JSONP</li>
+            <li>Fetch</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">XMLHttpRequest</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Простой пример</h2>
+        <pre>
+            <code>var xhr = new XMLHttpRequest();</code>
+            <code>xhr.open('GET', 'to/url.html', false);</code>
+            <code>xhr.send();</code>
+            <code>console.log(xhr.status);</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2>Простой пример</h2>
+        <ul>
+            <li>инициализировали объект</li>
+            <li>настроили на <mark>синхронный</mark> запрос по методу GET</li>
+            <li>отправили запрос</li>
+            <li><mark>после того как сервер ответил</mark> вывели в консоль код статуса</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2><code>open</code></h2>
+        <code>.open(method, url, async, <mark>user, password</mark>)</code>
+        <div>если <code>async = true</code> метод не блокирует страницу</div>
+        <br /><br />
+        <h2>Как получить статус в асинхронном режиме?</h2>
+    </section>
+
 
 
 
