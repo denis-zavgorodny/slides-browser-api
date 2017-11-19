@@ -461,6 +461,75 @@
         <h2>Как получить статус в асинхронном режиме?</h2>
     </section>
 
+    <section class="slide">
+        <h2><code>xhr.onreadystatechange</code></h2>
+        <pre>
+            <code>var xhr = new XMLHttpRequest();</code>
+            <code>xhr.open('GET', 'to/url.html', true);</code>
+            <code>xhr.send();</code>
+            <code>xhr.onreadystatechange = function() {</code>
+            <code>    if(xhr.readyState != 4) return;</code>
+            <code>    ...</code>
+            <code>}</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2><code>readyState</code></h2>
+        <ul>
+            <li>0 - open не вызывался</li>
+            <li>1 - open вызвался</li>
+            <li>2 - send вызвался</li>
+            <li>3 - получение данных</li>
+            <li>4 - данные получены</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2><code>xhr.onreadystatechange</code></h2>
+        <pre>
+            <code>var xhr = new XMLHttpRequest();</code>
+            <code>xhr.open('GET', 'to/url.html', true);</code>
+            <code>xhr.send();</code>
+            <code>xhr.onreadystatechange = function() {</code>
+            <code>    if(xhr.readyState != 4) return;</code>
+            <code>    if(xhr.status == 200) {</code>
+            <code>        console.log(xhr.responseText);</code>
+            <code>    }</code>
+            <code>}<span class="comment">// И это нам еще не нужно отправлять много данных</span></code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2>Отправялем POST</h2>
+        <pre>
+            <code>xhr.open('POST', 'to/url.html', true);</code>
+            <code>var data = {name: 'Bob', gender: 'male'};</code>
+            <code>xhr.send(data); <span class="comment">// [object Object]</span></code>
+            <code>xhr.onreadystatechange = function() {</code>
+            <code>    if(xhr.readyState != 4) return;</code>
+            <code>    if(xhr.status == 200) {</code>
+            <code>        console.log(xhr.responseText);</code>
+            <code>    }</code>
+            <code>}</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2>Отправялем POST</h2>
+        <pre>
+            <code>xhr.open('POST', 'to/url.html', true);</code>
+            <code>xhr.<mark>setRequestHeader</mark>(</code>
+            <code>    "Content-type", </code>
+            <code>    "<mark>application/x-www-form-urlencoded</mark>");</code>
+            <code>xhr.send("name=Bob&gender=male");</code>
+            <code>xhr.onreadystatechange = function() {</code>
+            <code>    if(xhr.readyState != 4) return;</code>
+            <code>    ...</code>
+            <code>}</code>
+        </pre>
+    </section>
+
 
 
 
