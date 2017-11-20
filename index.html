@@ -605,7 +605,7 @@
 
     <section class="slide">
         <h2>fetch</h2>
-        <center><img src="pictures/fetch.png" width="70%" alt=""></center>
+        <center><img src="pictures/fetch.png" width="100%" alt=""></center>
     </section>
 
     <section class="slide">
@@ -712,6 +712,66 @@
     </section>
 
     <section class="slide">
+        <h2 class="shout">MVC</h2>
+    </section>
+
+    <section class="slide">
+        <h2>MV*</h2>
+        <ul>
+            <li>MVC (Model-View-Controller)</li>
+            <li>MVP (Model-View-Presenter)</li>
+            <li>MVVM (Model-View-View-Model)</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Модель (model)</h2>
+        <ul>
+            <li>предоставляет данные</li>
+            <li>реагирует на команды контроллера</li>
+            <li>изменяет свое состояние</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Представление (view)</h2>
+        <ul>
+            <li>отображает данные из модели</li>
+            <li>реагирует на изменения модели</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Контроллер (Controller)</h2>
+        <ul>
+            <li>обеспечивает связь между пользователем и программой</li>
+            <li>интерпретирует действия пользователя</li>
+            <li>оповещает модель о необходимости изменений</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>MV*</h2>
+        <center><img src="pictures/mvc-compare.png" width="100%" alt=""></center>
+    </section>
+
+    <section class="slide">
+        <h2>Домашнее задание</h2>
+        <div>Релизовать страницу с выводом информации о занятиях из <a href="https://denis-zavgorodny.github.io/slides-browser-api/homework/data/data.json">источника данных</a></div>
+        <ul>
+            <li>реализовать конструктор <code>Schedule</code> с базовыми возможностями:
+                <ul>
+                    <li><code>get()</code> - получение данных с сервера</li>
+                    <li><code>render()</code> - отрисовка данных в страницу</li>
+                </ul>
+            </li>
+            <li>реализовать кеширование данных на стороне клиента на время сессии</li>
+            <li>запрещается использовать сторонние библиотеки</li>
+            <li>код можно писать в стиле ES5 или ES6</li>
+        </ul>
+    </section>
+
+    <section class="slide">
         <h2>Самостоятельное изучение</h2>
         <ul>
             <li><a href="https://developer.mozilla.org/ru/docs/DOM/DOM_Reference">Руководство по DOM</a>,
@@ -732,13 +792,9 @@
             <a href="https://learn.javascript.ru/xhr-crossdomain">кроссдоменные XHR</a></li>
             <li><a href="https://medium.com/web-standards/fetch-vs-axios-js-%D0%B4%D0%BB%D1%8F-%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%B8-http-%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81%D0%BE%D0%B2-41206a4c0060">Генерация HTTP запросов</a></li>
             <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers">HTTP заголовки</a></li>
+            <li><a href="https://habrahabr.ru/post/215605/">Паттерны для новичков</a></li>
         </ul>
     </section>
-
-
-
-
-
 
     <section class="slide">
         <h2>Спасибо!</h2>
@@ -760,14 +816,6 @@
             </tr>
         </table>
     </section>
-
-
-
-
-
-
-
-
 
 	<div class="progress"></div>
 
