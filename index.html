@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>DOM, Browser, Server</title>
+<title>DOM, Browser, Event Loop</title>
 
 
 	<meta charset="utf-8">
@@ -17,7 +17,7 @@
 </head>
 <body class="shower list">
 	<header class="caption">
-        <h1>DOM, Browser, Server</h1>
+        <h1>DOM, Browser, Event Loop</h1>
     </header>
 
 	<section class="slide">
@@ -94,6 +94,32 @@
             <li><code>document.querySelectorAll</code></li>
             <li><code>document.querySelector</code></li>
         </ul>
+    </section>
+    <section class="slide">
+        <h2>В чем разница?</h2>
+        <pre>
+            <code><span class="comment">&lt;!-- было --&gt;</span></code>
+            <code>&lt;section&gt;1&lt;section&gt;</code>
+            <code>&lt;section&gt;2&lt;section&gt;</code>
+            <code>&lt;section&gt;3&lt;section&gt;</code>
+            <code>...</code>
+            <code>var nodes = document.<mark>getElementsByTagName</mark>('section');</code>
+            <code>console.log(nodes.length)<span class="comment">// ???</span></code>
+        </pre>
+        <a href="https://jsfiddle.net/tu9ben4g/">https://jsfiddle.net/tu9ben4g/</a>
+    </section>
+    <section class="slide">
+        <h2>В чем разница?</h2>
+        <pre>
+            <code><span class="comment">&lt;!-- было --&gt;</span></code>
+            <code>&lt;section&gt;1&lt;section&gt;</code>
+            <code>&lt;section&gt;2&lt;section&gt;</code>
+            <code>&lt;section&gt;3&lt;section&gt;</code>
+            <code>...</code>
+            <code>var nodes = document.<mark>querySelectorAll</mark>('section');</code>
+            <code>console.log(nodes.length)<span class="comment">// ???</span></code>
+        </pre>
+        <a href="https://jsfiddle.net/thoc54v1/1/">https://jsfiddle.net/thoc54v1/1/</a>
     </section>
 
     <section class="slide">
@@ -234,6 +260,27 @@
     </section>
 
     <section class="slide">
+        <h2>Event Bubbling vs Event Capturing</h2>
+        <pre>
+            <code>&lt;div id="d1"&gt;</code>
+            <code>  &lt;a href="/404" id="l1"&gt;Link&lt;/a&gt;</code>
+            <code>&lt;/div&gt;</code>
+        </pre>
+    </section>
+    <section class="slide">
+        <h2>Event Bubbling vs Event Capturing</h2>
+        <pre>
+            <code>d<mark>**</mark>.getElementById('d1').addEventListener('click', () => {</code>
+            <code>  alert('div');</code>
+            <code>});</code>
+            <code>d<mark>**</mark>.getElementById('l1')addEventListener('click', () => {</code>
+            <code>  alert('link');</code>
+            <code>});</code>
+        </pre>
+        <a href="https://jsfiddle.net/5ph6oys2/5/">https://jsfiddle.net/5ph6oys2/5/</a>
+    </section>
+
+    <section class="slide">
         <h2 class="shout">window</h2>
     </section>
 
@@ -354,6 +401,49 @@
     </section>
 
     <section class="slide">
+        <h2>localStorage / sessionStorage</h2>
+        <p>ммм... Где искать?</p>
+        <a href="https://jsfiddle.net/denisz/o40aty7z/3/">https://jsfiddle.net/denisz/o40aty7z/3/</a>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">Cookies</h2>
+    </section>
+
+    <section class="slide">
+        <h2><code>Cookies</code></h2>
+        <br /><br />
+        <blockquote>– небольшой фрагмент данных, отправленный веб-сервером и хранимый на компьютере пользователя.
+            Веб-клиент всякий раз при попытке открыть страницу соответствующего сайта пересылает этот фрагмент данных веб-серверу в
+        составе HTTP-запроса.</blockquote>
+    </section>
+
+    <section class="slide">
+        <h2><code>Cookies</code></h2>
+        <pre>
+            <code>console.log(document.cookie);<span class="comment"> // String</span></code>
+            <code><span class="comment">// key=value; key2=value2; mykey=myvalue2</span></code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2><code>Cookies</code></h2>
+        <ul>
+            <li>key=value</li>
+            <li>path=/mypath</li>
+            <li>domain=mysite.ua</li>
+            <li>expires=Tue, 19 Jan 2055 03:14:07 GMT</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">WTF???</h2>
+        <a href="https://jsfiddle.net/denisz/apy6um8n/3/">https://jsfiddle.net/denisz/apy6um8n/3/</a>
+    </section>
+
+
+
+    <section class="slide">
         <h2 class="shout">Event Loop</h2>
     </section>
 
@@ -372,362 +462,34 @@
     </section>
 
     <section class="slide">
-        <h2 class="shout">Общение с сервером</h2>
-    </section>
-
-    <section class="slide">
-        <h2>Общение с сервером</h2>
-        <ul>
-            <li>отправка форм</li>
-            <li>XMLHttpRequest</li>
-            <li>JSONP</li>
-            <li>Fetch</li>
-        </ul>
-    </section>
-
-    <section class="slide">
-        <h2 class="shout">Методы HTTP</h2>
-    </section>
-
-    <section class="slide">
-        <h2>Методы запросов HTTP</h2>
-        <ul>
-            <li><mark>GET</mark></li>
-            <li>HEAD</li>
-            <li><mark>POST</mark></li>
-            <li>PUT</li>
-            <li>PATCH</li>
-            <li>OPTIONS</li>
-            <li>DELETE</li>
-            <li>TRACE</li>
-            <li>CONNECT</li>
-        </ul>
-    </section>
-
-    <section class="slide">
-        <h2>Коды ответов</h2>
-        <ul>
-            <li>1xx - информационные</li>
-            <li>2xx - успешные</li>
-            <li>3xx - перенаправления</li>
-            <li>4xx - ошибки клиента</li>
-            <li>5xx - ошибки сервера</li>
-        </ul>
-    </section>
-
-    <section class="slide">
-        <h2>Часто используемые коды ответов</h2>
-        <ul>
-            <li><code>200 OK</code></li>
-            <li><code>201 Created</code></li>
-            <li><code>301 Moved Permanently</code></li>
-            <li><code>302 Moved Temporarily</code></li>
-        </ul>
-    </section>
-    <section class="slide">
-        <h2>Часто используемые коды ответов</h2>
-        <ul>
-            <li><code>400 Bad Request</code></li>
-            <li><code>401 Unauthorized</code></li>
-            <li><code>403 Forbidden</code></li>
-            <li><code>404 Not Found</code></li>
-            <li><code>500 Internal Server Error</code></li>
-            <li><code>502 Bad Gateway</code></li>
-            <li><code>503 Service Unavailable</code></li>
-            <li><code>504 Gateway Timeout</code></li>
-        </ul>
-    </section>
-
-    <section class="slide">
-        <h2>Общение с сервером</h2>
-        <ul>
-            <li><del>отправка форм</del></li>
-            <li>XMLHttpRequest</li>
-            <li>JSONP</li>
-            <li>Fetch</li>
-        </ul>
-    </section>
-
-    <section class="slide">
-        <h2 class="shout">XMLHttpRequest</h2>
-    </section>
-
-    <section class="slide">
-        <h2>Простой пример</h2>
+        <h2>Event Loop</h2>
         <pre>
-            <code>var xhr = new XMLHttpRequest();</code>
-            <code>xhr.open('GET', 'to/url.html', false);</code>
-            <code>xhr.send();</code>
-            <code>console.log(xhr.status);</code>
-        </pre>
-    </section>
-
-    <section class="slide">
-        <h2>Простой пример</h2>
-        <ul>
-            <li>инициализировали объект</li>
-            <li>настроили на <mark>синхронный</mark> запрос по методу GET</li>
-            <li>отправили запрос</li>
-            <li><mark>после того как сервер ответил</mark> вывели в консоль код статуса</li>
-        </ul>
-    </section>
-
-    <section class="slide">
-        <h2><code>open</code></h2>
-        <code>.open(method, url, async, <mark>user, password</mark>)</code>
-        <div>если <code>async = true</code> метод не блокирует страницу</div>
-        <br /><br />
-        <h2>Как получить статус в асинхронном режиме?</h2>
-    </section>
-
-    <section class="slide">
-        <h2><code>xhr.onreadystatechange</code></h2>
-        <pre>
-            <code>var xhr = new XMLHttpRequest();</code>
-            <code>xhr.open('GET', 'to/url.html', true);</code>
-            <code>xhr.send();</code>
-            <code>xhr.onreadystatechange = function() {</code>
-            <code>    if(xhr.readyState != 4) return;</code>
-            <code>    ...</code>
+            <code>function foo() {</code>
+            <code>  baz();</code>
+            <code>}</code>
+            <code>function baz() {</code>
+            <code>  bar()</code>
+            <code>}</code>
+            <code>function bar() {</code>
+            <code>  console.log('hello');</code>
             <code>}</code>
         </pre>
     </section>
 
     <section class="slide">
-        <h2><code>readyState</code></h2>
-        <ul>
-            <li>0 - open не вызывался</li>
-            <li>1 - open вызвался</li>
-            <li>2 - send вызвался</li>
-            <li>3 - получение данных</li>
-            <li>4 - данные получены</li>
-        </ul>
+        <h2>Event Loop</h2>
+        <img src="pictures/event-loop.gif" height="80%" style="display: block; margin: 0 auto;" alt="">
     </section>
 
     <section class="slide">
-        <h2><code>xhr.onreadystatechange</code></h2>
-        <pre>
-            <code>var xhr = new XMLHttpRequest();</code>
-            <code>xhr.open('GET', 'to/url.html', true);</code>
-            <code>xhr.send();</code>
-            <code>xhr.onreadystatechange = function() {</code>
-            <code>    if(xhr.readyState != 4) return;</code>
-            <code>    if(xhr.status == 200) {</code>
-            <code>        console.log(xhr.responseText);</code>
-            <code>    }</code>
-            <code>}<span class="comment">// И это нам еще не нужно отправлять много данных</span></code>
-        </pre>
+        <h2 class="shout">Examples</h2>
+        <a href="https://jsfiddle.net/denisz/9tkerns5/1/">https://jsfiddle.net/denisz/9tkerns5/1/</a>
     </section>
 
     <section class="slide">
-        <h2>Отправялем POST</h2>
-        <pre>
-            <code>xhr.open('POST', 'to/url.html', true);</code>
-            <code>var data = {name: 'Bob', gender: 'male'};</code>
-            <code>xhr.send(data); <span class="comment">// [object Object]</span></code>
-            <code>xhr.onreadystatechange = function() {</code>
-            <code>    if(xhr.readyState != 4) return;</code>
-            <code>    if(xhr.status == 200) {</code>
-            <code>        console.log(xhr.responseText);</code>
-            <code>    }</code>
-            <code>}</code>
-        </pre>
-    </section>
-
-    <section class="slide">
-        <h2>Отправялем POST</h2>
-        <pre>
-            <code>xhr.open('POST', 'to/url.html', true);</code>
-            <code>xhr.<mark>setRequestHeader</mark>(</code>
-            <code>    "Content-type", </code>
-            <code>    "<mark>application/x-www-form-urlencoded</mark>");</code>
-            <code>xhr.send("name=Bob&gender=male");</code>
-            <code>xhr.onreadystatechange = function() {</code>
-            <code>    if(xhr.readyState != 4) return;</code>
-            <code>    ...</code>
-            <code>}</code>
-        </pre>
-    </section>
-
-    <section class="slide">
-        <h2 class="shout">CORS</h2>
-    </section>
-
-    <section class="slide">
-        <h2>Cross-origin resource sharing</h2>
-        <ul>
-            <li>
-                <mark>Same Origin Policy</mark>, политика одинакового источника
-                <ul>
-                    <li>протокол</li>
-                    <li>домен</li>
-                    <li>порт</li>
-                </ul>
-            </li>
-            <li>политика регламентирования доступа к ресурсам другого домена</li>
-            <li><code>Access-Control-Allow-Origin: http://youdomain.com</code></li>
-        </ul>
-    </section>
-
-    <section class="slide">
-        <h2><code>JSONP</code></h2>
-        <pre>
-            <code>&lt;script </code>
-            <code>    src="some.js?query=data&<mark>callback</mark>=myFunction"&gt;</code>
-            <code>&lt;/script&gt;</code>
-            <code>&lt;script&gt;</code>
-            <code>    function myFunction(params){...}</code>
-            <code>&lt;/script&gt;</code>
-        </pre>
-    </section>
-
-    <section class="slide">
-        <h2><code>JSONP</code></h2>
-        <pre>
-            <code>&lt;script&gt;</code>
-            <code>    var script = document.createElement('script');</code>
-            <code>    script.src = "some.js?query=data&<mark>callback</mark>=myFunction";</code>
-            <code>    script.async = true;</code>
-            <code>    document.body.appendChild(script);</code>
-            <code>    function myFunction(params){...}</code>
-            <code>&lt;/script&gt;</code>
-        </pre>
-    </section>
-
-    <section class="slide">
-        <h2 class="shout">fetch</h2>
-    </section>
-
-    <section class="slide">
-        <h2>fetch</h2>
-        <code>let promise = fetch(url[, options]);</code>
-        <ul>
-            <li><code>method</code> – метод запроса</li>
-            <li><code>headers</code> – заголовки запроса <code>{}</code></li>
-            <li><code>body</code> – тело запроса</li>
-            <li><code>mode</code> – <code>same-origin</code> | <code>no-cors</code> | <code>cors</code></li>
-            <li><code>credentials</code> – <code>omit</code> | <code>same-origin</code> | <code>include</code></li>
-            <li><code>cache</code> – <code>default</code> | <code>no-store</code> | <code>reload</code> | <code>no-cache</code> | <code>force-cache</code></li>
-            <li><code>redirect</code> – <code>follow</code> | <code>error</code></li>
-        </ul>
-    </section>
-
-    <section class="slide">
-        <h2>fetch</h2>
-        <pre>
-            <code>let promise = fetch(url[, options]);</code>
-            <code>promise.then(function(response){</code>
-            <code>    console.log(response); <span class="comment">// ?</span></code>
-            <code>});</code>
-        </pre>
-    </section>
-
-    <section class="slide">
-        <h2>fetch</h2>
-        <center><img src="pictures/fetch.png" width="100%" alt=""></center>
-    </section>
-
-    <section class="slide">
-        <h2>fetch</h2>
-        <pre>
-            <code>let promise = fetch(url[, options]);</code>
-            <code>promise.then(function(response){</code>
-            <code>    return  response.json();</code>
-            <code>})</code>
-            <code>.then(function(response){</code>
-            <code>    console.log(<mark>response</mark>);</code>
-            <code>});</code>
-        </pre>
-    </section>
-
-    <section class="slide">
-        <h2>fetch</h2>
-        <ul>
-            <li><code>response.arrayBuffer()</code></li>
-            <li><code>response.blob()</code></li>
-            <li><code>response.formData()</code></li>
-            <li><code>response.json()</code></li>
-            <li><code>response.text()</code></li>
-        </ul>
-    </section>
-
-    <section class="slide">
-        <h2 class="shout">Кэширование</h2>
-    </section>
-
-    <section class="slide">
-        <h2>HTTP Headers</h2>
-        <ul>
-            <li>General Headers</li>
-            <li>Request Headers</li>
-            <li>Response Headers</li>
-            <li>Entity Headers</li>
-        </ul>
-    </section>
-
-    <section class="slide">
-        <h2>Cache-Control [HTTP 1.1]</h2>
-        <ul>
-            <li>max-age=ХХ (время в сек)</li>
-            <li>private | public</li>
-            <li>no-cache</li>
-            <li>no-store</li>
-            <li>must-revalidate</li>
-            <li>...</li>
-
-        </ul>
-    </section>
-
-    <section class="slide">
-        <h2>Expires [HTTP 1.0]</h2>
-        <ul>
-            <li>
-                <code>Expires: Wed, 16 Nov 2017 07:28:00 GMT</code>
-            </li>
-            <li>устаревший аналог
-                <big>max-age</big>
-            </li>
-        </ul>
-    </section>
-
-    <section class="slide">
-        <h2>ETag [HTTP 1.1]</h2>
-        <ul>
-            <li>
-                <code>ETag: "59a49fa0-b9ac"</code>
-            </li>
-            <li>требуется запрос на сервер</li>
-            <li>более тонкая работа с кэшем</li>
-        </ul>
-    </section>
-
-    <section class="slide">
-        <h2 class="shout">Клиент-сервер</h2>
-    </section>
-
-    <section class="slide">
-        <h2>Клиент-сервер</h2>
-        <center><img src="pictures/client1.jpg" width="70%" alt=""></center>
-    </section>
-
-    <section class="slide">
-        <h2>Клиент-сервер</h2>
-        <center><img src="pictures/client2.jpg" width="70%" alt=""></center>
-    </section>
-
-    <section class="slide">
-        <h2>Клиент-сервер</h2>
-        <ul>
-            <li>больше логики на клиенте</li>
-            <li>взаимодействие с сервером без перезагрузки страницы
-                <ul>
-                    <li><code>XHR</code>, <code>JSONP</code>, <code>fetch</code></li>
-                    <li><code>History</code> API</li>
-                </ul>
-            </li>
-            <li>управление кэшированием</li>
-            <li>хранение данных на клиенте <code>localStorage</code></li>
-        </ul>
+        <h2>requestAnimationFrame</h2>
+        <blockquote>указывает браузеру на то, что вы хотите произвести анимацию, и просит его запланировать перерисовку на следующем кадре
+        анимации. В качестве параметра метод получает функцию, которая будет вызвана перед перерисовкой.</blockquote>
     </section>
 
     <section class="slide">
@@ -743,25 +505,7 @@
             <li><a href="https://habr.com/ru/company/ruvds/blog/337042/">Как работает JS: обзор движка, механизмов времени выполнения, стека вызовов</a></li>
             <li><a href="https://developer.mozilla.org/ru/docs/Web/API/Window/localStorage">LocaStorage</a> и
             <a href="https://developer.mozilla.org/ru/docs/Web/API/Window/sessionStorage">sessionStorage</a></li>
-            <li><a href="https://developer.mozilla.org/ru/docs/Web/HTTP/Status">HTTP коды ответов</a>,
-            <a href="https://developer.mozilla.org/ru/docs/Web/HTTP/Methods">HTTP методы запросов</a></li>
 
-        </ul>
-    </section>
-
-    <section class="slide">
-        <h2>Самостоятельное изучение</h2>
-        <ul>
-            <li><a href="https://developer.mozilla.org/ru/docs/Web/API/XMLHttpRequest">Основы XHR</a>,
-                <a href="https://learn.javascript.ru/ajax-xmlhttprequest">еще XHR</a>
-                <a href="http://xmlhttprequest.ru/">и полное описание XMLHTTPRequest</a>
-            </li>
-            <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS">Описание CORS</a>,
-                <a href="https://learn.javascript.ru/xhr-crossdomain">кроссдоменные XHR</a></li>
-            <li><a
-                    href="https://medium.com/web-standards/fetch-vs-axios-js-%D0%B4%D0%BB%D1%8F-%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%B8-http-%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81%D0%BE%D0%B2-41206a4c0060">Генерация
-                    HTTP запросов</a></li>
-            <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers">HTTP заголовки</a></li>
         </ul>
     </section>
 
